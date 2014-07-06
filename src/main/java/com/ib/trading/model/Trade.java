@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -32,7 +33,10 @@ public class Trade implements Serializable, BaseEntity{
 	private TradeSymbol tradeSymbol = null;
 	
 	private BigDecimal value = null;
-
+	
+	@OneToOne
+	private Account account =  null;
+		
 	public TradeSymbol getTradeSymbol() {
 		return tradeSymbol;
 	}
@@ -71,6 +75,14 @@ public class Trade implements Serializable, BaseEntity{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	@Override
